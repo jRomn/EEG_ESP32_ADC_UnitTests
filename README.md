@@ -78,9 +78,9 @@ adc_oneshot_chan_cfg_t chan_config = {
 
 *Link this configuration to our ADC handle :*
 
-	```c
-	ret = adc_oneshot_config_channel(adc_handle, ADC_CHANNEL, &chan_config)
-	```
+```c
+ret = adc_oneshot_config_channel(adc_handle, ADC_CHANNEL, &chan_config)
+```
 
 At this point, any call from ESP-IDF to the ADC handle will inform that the ADC Unit instance is configured to read from GPIO34, using 12-bit precision and full 3.3 V input range.
 
@@ -93,29 +93,32 @@ To improve accuracy to actual voltages in millivolts ( mV ) , request ESP-IDF to
 
 *Define the calibration configuration structure :*
 
-	Use the same parameters used for our channel. 
-	
-	// This structure describes how the calibration should be performed.
-	// - unit_id: Which ADC unit (must match the one used before)
-	// - atten: Must match the attenuation used in channel config
-	// - bitwidth: Must match the bitwidth used in channel config
-	adc_cali_line_fitting_config_t cali_cfg = {
-	    .unit_id = ADC_UNIT,           // Same ADC unit as before
-	    .atten = ADC_ATTEN_DB_12,      // Same attenuation as channel config
-	    .bitwidth = ADC_BITWIDTH_DEFAULT  // Same bitwidth as channel config
-	};
+Use the same parameters used for our channel. 
+
+``c
+// This structure describes how the calibration should be performed.
+// - unit_id: Which ADC unit (must match the one used before)
+// - atten: Must match the attenuation used in channel config
+// - bitwidth: Must match the bitwidth used in channel config
+adc_cali_line_fitting_config_t cali_cfg = {
+    .unit_id = ADC_UNIT,           // Same ADC unit as before
+    .atten = ADC_ATTEN_DB_12,      // Same attenuation as channel config
+    .bitwidth = ADC_BITWIDTH_DEFAULT  // Same bitwidth as channel config
+};
+```
+
   
 *Link this configuration to our Calibration handle :* 
 
-	```c
-	if (adc_cali_create_scheme_line_fitting(&cali_cfg, &adc_cali_handle) == ESP_OK) 
-	{
-	    ESP_LOGI(ADC_TAG, "ADC calibration ready.");
-	} else {
-	    ESP_LOGW(ADC_TAG, "ADC calibration not available. Using raw ADC values.");
-	    adc_cali_handle = NULL;          // Use raw values if calibration fails
-	}
-	```
+```c
+if (adc_cali_create_scheme_line_fitting(&cali_cfg, &adc_cali_handle) == ESP_OK) 
+{
+	ESP_LOGI(ADC_TAG, "ADC calibration ready.");
+} else {
+	ESP_LOGW(ADC_TAG, "ADC calibration not available. Using raw ADC values.");
+	adc_cali_handle = NULL;          // Use raw values if calibration fails
+}
+```
 
 From now on, any future readings will be converted to millivolts for improved accuracy.
 
