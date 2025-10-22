@@ -17,7 +17,8 @@ The setup flow can be summarized as :
 
 **STEP 1 : ADC Unit Initialization** 
 
-*Declare what is called a Handles :* 
+*Declare what is called a Handles :
+
 
 	Handles are like references ( essentially a "pointer" ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
 	
@@ -28,7 +29,8 @@ The setup flow can be summarized as :
 	
 	This handle is Global, meaning it can be used for all future ADC calls.
 	
-	> | Note: At this point, adc_handle is just a NULL pointer.
+	 | Note: At this point, adc_handle is just a NULL pointer.
+
 
 *Define the ADC Unit configuration structure :*
 
