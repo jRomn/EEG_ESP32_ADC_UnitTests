@@ -1,5 +1,20 @@
 # EEG Headband Firmware Setup — ADC Module Subsystem 
 
+*Development Environment*
+
+This project was developed and tested using:
+
+- IDE: Visual Studio Code
+
+- C/C++ IntelliSense & Linting: clangd
+
+- SDK / Framework: ESP-IDF (Espressif IoT Development Framework)
+
+- Target Platform: ESP32
+
+> | Note: Clangd integration ensures accurate code completion, error highlighting, and faster navigation while working with ESP-IDF projects in VS Code.
+
+
 ## Overview: What This ADC Module Does
 
 The ADC subsystem ( Analog-to-Digital Converter ) is responsible for translating the tiny analog EEG voltages coming from the electrodes into digital samples that the ESP32 can process in software.
