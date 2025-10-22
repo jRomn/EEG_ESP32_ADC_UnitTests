@@ -19,10 +19,9 @@ The setup flow can be summarized as :
 
 *Declare what is called a Handles :
 
+Handles are like references ( essentially a "pointer” ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
 
-	Handles are like references ( essentially a "pointer" ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
-	
-	Think of these handles as “remote controls” that allow firmware to communicate with the ADC hardware through an abstraction layer.
+Think of these handles as “remote controls” that allow firmware to communicate with the ADC hardware through an abstraction layer.
 	
 	
 	
