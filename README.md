@@ -23,10 +23,12 @@ The setup flow can be summarized as :
 	
 	Think of these handles as “remote controls” that allow firmware to communicate with the ADC hardware through an abstraction layer.
 	
+	
 	```c
 	extern adc_oneshot_unit_handle_t adc_handle;  // ADC driver handle
 	extern adc_cali_handle_t adc_cali_handle;  // ADC Calibration handle
 	```
+	
 	
 	This handle is Global, meaning it can be used for all future ADC calls.
 	
@@ -197,7 +199,7 @@ This task will run at a fixed interval (e.g., every 10 ms → 100 Hz sampling), 
 ## Folder Structure
 
 For “modular implementation” here is the expected general folder structure: 
-	```
+	
 	eeg/          — Root project directory
 	├── .vscode/            — VS Code configs (for debugging bliss)
 	├── components/
@@ -221,7 +223,7 @@ For “modular implementation” here is the expected general folder structure:
 	├── CMakeLists.txt      — Top-level project (boilerplate magic)
 	├── pytest_unittest.py  — Test runner (optional)
 	└── README.md           — This doc (or expand it!)
-	```
+	
 
 > | Note :  We recommend to follow this structure since it would be easy to add unit tests in the future. 
 
