@@ -19,15 +19,11 @@ The setup flow can be summarized as :
 
 *Declare what is called a Handles :* 
 
-	Handles are like references ( essentially a "pointer” ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
+	Handles are like references ( essentially a "pointer" ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
 	
 	Think of these handles as “remote controls” that allow firmware to communicate with the ADC hardware through an abstraction layer.
 	
 	
-	```c
-	extern adc_oneshot_unit_handle_t adc_handle;  // ADC driver handle
-	extern adc_cali_handle_t adc_cali_handle;  // ADC Calibration handle
-	```
 	
 	
 	This handle is Global, meaning it can be used for all future ADC calls.
