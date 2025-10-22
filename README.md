@@ -17,48 +17,46 @@ The setup flow can be summarized as :
 
 **STEP 1 : ADC Unit Initialization** 
 
-*Declare what is called a Handles :
+*Declare what is called a Handles :*
 
 Handles are like references ( essentially a "pointer” ) that will later point to software objects ( blueprints ) of the ADC hardware and/or calibration engine inside ESP-IDF.
 
 Think of these handles as “remote controls” that allow firmware to communicate with the ADC hardware through an abstraction layer.
+```c	
+extern adc_oneshot_unit_handle_t adc_handle;  // ADC driver handle
+extern adc_cali_handle_t adc_cali_handle;  // ADC Calibration handle
+```	
 	
-	
-	
-	
-	This handle is Global, meaning it can be used for all future ADC calls.
-	
-	 | Note: At this point, adc_handle is just a NULL pointer.
+This handle is Global, meaning it can be used for all future ADC calls.
+
+> | Note :  At this point, adc_handle is just a NULL pointer.
 
 
 *Define the ADC Unit configuration structure :*
 
-	Here we describe which ADC hardware block (ADC1 or ADC2) we want to use and any global settings associated with it.
-	
-	```c
-	adc_oneshot_unit_init_cfg_t init_config = {
-	    .unit_id = ADC_UNIT,   // Use ADC1 block
-	};
-	```
+Here we describe which ADC hardware block (ADC1 or ADC2) we want to use and any global settings associated with it.
+```c
+adc_oneshot_unit_init_cfg_t init_config = {
+    .unit_id = ADC_UNIT,   // Use ADC1 block
+};
+```c
 
-	> | Note: This structure doesn’t actually configure hardware yet — it’s just a blueprint that describes our intended setup.
+> | Note :  This structure doesn’t actually configure hardware yet — it’s just a blueprint that describes our intended setup.
 
 
 *Initialize the ADC Unit using ESP-IDF API*
+```c
+ret = adc_oneshot_new_unit(&init_config, &adc_handle);
+```
+By “initialize” we mean : 
 
-	```c
-	ret = adc_oneshot_new_unit(&init_config, &adc_handle);
-	```
+- Allocates memory for the ADC driver object we have just created.
 
-	By “initialize” we mean : 
-	
-		* Allocates memory for the ADC driver object we have just created.
-		
-		* Programs ADC hardware registers according to init_config
-		
-		* And most importantly, updates adc_handle to point to this driver object. 
-		
-		* At this point we have taken our blueprint and turned it into an operational ADC driver object. 
+- Programs ADC hardware registers according to init_config
+
+- And most importantly, updates adc_handle to point to this driver object. 
+
+At this point we have taken our blueprint and turned it into an operational ADC driver object. 
 
 
 **STEP 2 : Channel Configuration**
