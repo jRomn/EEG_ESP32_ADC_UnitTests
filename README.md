@@ -95,7 +95,7 @@ To improve accuracy to actual voltages in millivolts ( mV ) , request ESP-IDF to
 
 Use the same parameters used for our channel. 
 
-``c
+```c
 // This structure describes how the calibration should be performed.
 // - unit_id: Which ADC unit (must match the one used before)
 // - atten: Must match the attenuation used in channel config
