@@ -35,19 +35,21 @@ This handle is Global, meaning it can be used for all future ADC calls.
 *Define the ADC Unit configuration structure :*
 
 Here we describe which ADC hardware block (ADC1 or ADC2) we want to use and any global settings associated with it.
+
 ```c
 adc_oneshot_unit_init_cfg_t init_config = {
     .unit_id = ADC_UNIT,   // Use ADC1 block
 };
-```c
+```
 
 > | Note :  This structure doesn’t actually configure hardware yet — it’s just a blueprint that describes our intended setup.
 
+*Initialize the ADC Unit using ESP-IDF API :*
 
-*Initialize the ADC Unit using ESP-IDF API*
 ```c
 ret = adc_oneshot_new_unit(&init_config, &adc_handle);
 ```
+
 By “initialize” we mean : 
 
 - Allocates memory for the ADC driver object we have just created.
@@ -56,7 +58,7 @@ By “initialize” we mean :
 
 - And most importantly, updates adc_handle to point to this driver object. 
 
-At this point we have taken our blueprint and turned it into an operational ADC driver object. 
+- At this point we have taken our blueprint and turned it into an operational ADC driver object. 
 
 
 **STEP 2 : Channel Configuration**
@@ -65,12 +67,14 @@ Once we have initialized our ADC Unit, we must define which specific physical pi
 
 *Define the channel configuration structure :*
 
-	```c
-	adc_oneshot_chan_cfg_t chan_config = {
-	    .bitwidth = ADC_BITWIDTH_DEFAULT,  // Default 12-bit resolution
-	    .atten = ADC_ATTEN_DB_12           // ~3.3V full-scale voltage range
-	};
-	```
+```c
+adc_oneshot_chan_cfg_t chan_config = {
+    .bitwidth = ADC_BITWIDTH_DEFAULT,  // Default 12-bit resolution
+    .atten = ADC_ATTEN_DB_12           // ~3.3V full-scale voltage range
+};
+```
+
+
 
 *Link this configuration to our ADC handle :*
 
