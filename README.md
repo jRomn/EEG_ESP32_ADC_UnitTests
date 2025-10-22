@@ -1,6 +1,3 @@
-# ESP32_ADC_Module
-Complete ESP32 ADC subsystem integrating calibrated analog input, FreeRTOS sampling task, circular buffer design, and configurable debug logging — ideal for EEG or low-frequency sensor acquisition.
-
 # EEG Headband Firmware Setup — ADC Module Subsystem 
 
 ## Overview: What This ADC Module Does
