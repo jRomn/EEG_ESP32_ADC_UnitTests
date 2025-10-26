@@ -21,9 +21,9 @@ The ADC subsystem ( Analog-to-Digital Converter ) is responsible for translating
 
 EEG signals are extremely weak — typically in the 10–100 µV range — and cannot be directly read by the ESP32.
 
-To make them measurable, the analog front-end amplifier boosts these signals into a 0–3.3 V range, which the ADC can then safely sample. 
+To make them measurable, an analog front-end amplifier (e.g. AD8232) is use  to boosts these signals into a 0–3.3 V range, which the ADC can then safely sample. 
 
-Therefore, we need to set up the ADC subsystem for the Data Acquisition Task —once configured, the ADC subsystem becomes the foundation of continuously sampling EEG voltages and placing them into a buffer for real-time processing.
+Here we show how to set up the ADC subsystem for the Data Acquisition Task —once configured, the ADC subsystem becomes the foundation of continuously sampling EEG voltages and placing them into a buffer for real-time processing.
 
 The setup flow can be summarized as :  
 
