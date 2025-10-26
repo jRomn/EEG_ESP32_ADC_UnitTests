@@ -1,2 +1,2 @@
-source C:/Users/tmpor/Documents/ESP_Projects/adc/build/gdbinit/symbols
-source C:/Users/tmpor/Documents/ESP_Projects/adc/build/gdbinit/connect
+source C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/gdbinit/symbols
+source C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/gdbinit/connect

@@ -11,9 +11,6 @@
     /* --- ADC --- */
     #include "adc.h"
 
-
-
-
 // =============================
 // Main Application Entry Point
 // =============================
@@ -33,12 +30,30 @@ void app_main(void)
         return;
     }
 
+    // --- Create Mutex for ADC Buffer ---
+    adc_mutex = xSemaphoreCreateMutex();
+    if (adc_mutex == NULL) {
+        ESP_LOGE(ADC_TAG, "Failed to create ADC mutex!");
+        return;
+    }
+
     BaseType_t task_status;
 
     // --- Task for ADC Sampling ---
     task_status = xTaskCreate(adc_sampling, "ADC Sampling", 2048, NULL, 5, NULL);
-    if (task_status != pdPASS)
+    if (task_status == pdPASS) {
+        ESP_LOGI(ADC_TAG, "ADC Sampling task created successfully!");
+    } else {
         ESP_LOGE(ADC_TAG, "Failed to create ADC sampling task!");
+    }
+
+    // --- Task for ADC Filtering ---
+    task_status = xTaskCreate(adc_filtering, "ADC Filtering", 2048, NULL, 4, NULL);
+    if (task_status == pdPASS) {
+        ESP_LOGI(ADC_TAG, "ADC Filtering task created successfully!");
+    } else {
+        ESP_LOGE(ADC_TAG, "Failed to create ADC task!");
+    }
 
 }
 

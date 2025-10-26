@@ -22,4 +22,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader/bootloader.elf
+file C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader/bootloader.elf

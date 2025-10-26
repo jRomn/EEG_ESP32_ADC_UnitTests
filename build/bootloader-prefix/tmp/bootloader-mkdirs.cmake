@@ -10,18 +10,18 @@ if(NOT EXISTS "C:/Users/tmpor/esp/v5.5.1/esp-idf/components/bootloader/subprojec
   file(MAKE_DIRECTORY "C:/Users/tmpor/esp/v5.5.1/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader"
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix"
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/tmp"
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/src"
-  "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/tmp"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/src"
+  "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

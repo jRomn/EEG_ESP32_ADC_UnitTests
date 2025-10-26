@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader/esp-idf/esp_hw_support/port/esp32/cmake_install.cmake")
+  include("C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader/esp-idf/esp_hw_support/port/esp32/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tmpor/Documents/ESP_Projects/adc/build/bootloader/esp-idf/esp_hw_support/lowpower/cmake_install.cmake")
+  include("C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader/esp-idf/esp_hw_support/lowpower/cmake_install.cmake")
 endif()
 

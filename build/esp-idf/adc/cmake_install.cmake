@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/tmpor/Documents/ESP_Projects/adc/components/adc
+# Install script for directory: C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/components/adc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,6 +1,6 @@
 /* Automatically generated file; DO NOT EDIT */
 /* Espressif IoT Development Framework Linker Script */
-/* Generated from: C:\Users\tmpor\Documents\ESP_Projects\adc\build\esp-idf\esp_system\ld\sections.ld.in */
+/* Generated from: C:\Users\tmpor\Documents\ESP_Projects\ESP32_ADC_IIF_Bandpass_Filter\build\esp-idf\esp_system\ld\sections.ld.in */
 
 /*
 
