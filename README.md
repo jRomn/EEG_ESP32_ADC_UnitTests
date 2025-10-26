@@ -169,6 +169,49 @@ This task will run at a fixed interval (e.g., every 10 ms → 100 Hz sampling), 
 
 
 
+
+
+**STEP 5 FreeRTOS Filtering ( & Detection ) Task**
+
+After the ADC task fills the circular buffer with digitized EEG samples, the next step is to clean the signal ( _filtering_ ) and identify the frequencies of interest ( _detection_ ). 
+
+Those can be accomplished by a dedicated FreeRTOS Filtering ( & Detection ) Task, which periodically performs the following three main operations for continuous real-time signal processing :
+
+*Read latest ADC sample from the circular buffer*
+
+```c
+size_t latest_idx = (buffer_index - 1 + BUFFER_SIZE) % BUFFER_SIZE;
+int16_t current_sample = adc_buffer[latest_idx];
+```
+
+This retrieves the most recent ADC sample stored by the ADC acquisition task, using modular arithmetic to safely wrap around when the buffer index reaches the end.
+
+*Apply a digital IIR bandpass filter*
+
+```c
+int16_t filtered = apply_bandpass_iir(current_sample);
+```
+This line applies a 2nd-order IIR Band-pass filter to isolate 0.5–30 Hz band frequencies.
+
+
+*Pass the Cleaned Value to the Next Processing Stage ( Detection )*
+
+Once the signal is cleaned, it’s passed to the event detection and alpha-score routines to identify physiological events such as blinks or dominant alpha-band activity.
+
+```c
+detect_events(filtered);
+```
+
+This task “xTaskCreate(adc_filtering)” function runs periodically ( same as ADC acquisition task, every 10 ms → 100 Hz sampling ) but remains with a lower priority ( 4 ) than the ADC acquisition task,  to prevent any risk of timing interference with the sampling process.
+
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 ## System Diagram — ADC Subsystem Data Flow
 
 ```
