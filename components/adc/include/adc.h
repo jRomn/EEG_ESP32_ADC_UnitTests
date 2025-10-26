@@ -38,7 +38,7 @@ extern adc_cali_handle_t adc_cali_handle;     // ADC Calibration handle
 #define ADC_UNIT       ADC_UNIT_1
 #define ADC_CHANNEL    ADC_CHANNEL_6   // GPIO34
 #define BUFFER_SIZE    256             // Circular buffer length
-#define ADC_SAMPLE_PERIOD_MS 10       // Sampling period (ms)
+#define ADC_SAMPLE_PERIOD_MS 10.0       // Sampling period (ms)
 #define SAMPLE_RATE_HZ (1000 / ADC_SAMPLE_PERIOD_MS)  // Derived rate
 
 // =============================

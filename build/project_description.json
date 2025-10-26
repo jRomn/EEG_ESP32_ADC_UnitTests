@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "adc",
-    "project_version":    "b210956-dirty",
+    "project_version":    "74a3659-dirty",
     "project_path":       "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter",
     "idf_path":           "C:/Users/tmpor/esp/v5.5.1/esp-idf",
     "build_dir":          "C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build",

@@ -184,6 +184,28 @@ void adc_sampling(void *arg){
 
 
 // =============================
+// Simple Goertzel for Alpha Power (8-12 Hz; For Focus)
+// =============================
+uint8_t compute_alpha_score(const int16_t *window, size_t len){
+    float coeff = 2.0f * cosf(2.0f * M_PI * 10.0f / SAMPLE_RATE_HZ);
+    float q0 = 0, q1 = 0, q2 = 0;
+
+    for (size_t i = 0; i < len; i++) {
+        float s = (float)window[i];
+        q0 = coeff * q1 - q2 + s;
+        q2 = q1;
+        q1 = q0;
+    }
+
+    // Power (no sqrt for speed)
+    float magnitude = q1 * q1 + q2 * q2 - q1 * q2 * coeff;
+
+    // Normalize to 0–100 (tune scale empirically)
+    return (uint8_t)fminf(100.0f, magnitude * 0.001f);
+}
+
+
+// =============================
 // Event Detection (Blinks & Focus)
 // =============================
 void detect_events(int16_t filtered_current) {  // Changed: Param for filtered
