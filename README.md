@@ -255,6 +255,8 @@ This task “xTaskCreate(adc_filtering)” function runs periodically ( same as 
         └────────────────────────┘
 ```
 
+----------------------------------------------------------------------------------------------------
+
 
 ## Folder Structure
 
