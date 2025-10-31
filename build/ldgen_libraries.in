@@ -93,8 +93,10 @@ $<TARGET_FILE:__idf_esp_driver_twai>
 $<TARGET_FILE:idf::esp_adc>
 $<TARGET_FILE:__idf_driver>
 $<TARGET_FILE:idf::esp_event>
+$<TARGET_FILE:idf::unity>
 $<TARGET_FILE:idf::adc>
 $<TARGET_FILE:__idf_esp_adc>
 $<TARGET_FILE:__idf_esp_event>
+$<TARGET_FILE:__idf_unity>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_adc>

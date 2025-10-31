@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/bootloader/bootloader.elf
+    add-symbol-file C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/build/adc.elf
+file C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/build/ESP32_ADC_IIF_BANDPASS_FILTER.elf

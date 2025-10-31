@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/bootloader/bootloader.elf
+    add-symbol-file C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/unit_test_test.elf
+file C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/EEG_ESP32_ADC_UnitTests.elf

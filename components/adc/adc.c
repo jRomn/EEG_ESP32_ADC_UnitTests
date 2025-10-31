@@ -31,8 +31,8 @@ SemaphoreHandle_t adc_mutex = NULL;
 // =============================
 // IIR Bandpass Globals (2nd-order Butterworth, 0.5-30Hz @100Hz sample)
 // =============================
-float bp_a[3] = {1.0f, -1.927f, 0.930f};  // Denom coeffs
-float bp_b[3] = {0.004f, 0.0f, -0.004f};  // Num coeffs (approx for fs=100Hz)
+float bp_a[3] = {1.0f, -0.2162f, 0.2174f};   // Denominator
+float bp_b[3] = {0.3913f, 0.0f, -0.3913f};   // Numerator
 float bp_x[2] = {0};  // Input history
 float bp_y[2] = {0};  // Output history
 
@@ -143,6 +143,15 @@ adc_oneshot_unit_handle_t init_adc(void){
 
 
 // =============================
+// Helper: Push New Sample into ADC Buffer
+// =============================
+void adc_push_sample(int16_t sample) {
+    adc_buffer[buffer_index] = sample;
+    buffer_index = (buffer_index + 1) % BUFFER_SIZE;
+}
+
+
+// =============================
 // FreeRTOS Task: ADC Sampling
 // =============================
 void adc_sampling(void *arg){
@@ -187,21 +196,25 @@ void adc_sampling(void *arg){
 // Simple Goertzel for Alpha Power (8-12 Hz; For Focus)
 // =============================
 uint8_t compute_alpha_score(const int16_t *window, size_t len){
+
     float coeff = 2.0f * cosf(2.0f * M_PI * 10.0f / SAMPLE_RATE_HZ);
+
     float q0 = 0, q1 = 0, q2 = 0;
 
     for (size_t i = 0; i < len; i++) {
+
         float s = (float)window[i];
         q0 = coeff * q1 - q2 + s;
         q2 = q1;
         q1 = q0;
+        
     }
 
     // Power (no sqrt for speed)
     float magnitude = q1 * q1 + q2 * q2 - q1 * q2 * coeff;
 
     // Normalize to 0–100 (tune scale empirically)
-    return (uint8_t)fminf(100.0f, magnitude * 0.001f);
+    return (uint8_t)fminf(100.0f, magnitude * 0.00001f);
 }
 
 
@@ -211,14 +224,14 @@ uint8_t compute_alpha_score(const int16_t *window, size_t len){
 void detect_events(int16_t filtered_current) {  // Changed: Param for filtered
     
     static int16_t prev_sample = 0;
-    static uint8_t refractory = 0;  // simple debounce counter
-    
+    static uint8_t refractory = REFRACTORY_PERIOD_SAMPLES;  // simple debounce counter
+
     // Blink: Spike detection (derivative >200µV threshold)
     int16_t derivative = filtered_current - prev_sample;
     if (!refractory && abs(derivative) > 20) {  // µV threshold; adjust for your amp
         blink_count++;
         ESP_LOGI(ADC_TAG, "Blink detected! Count: %lu", blink_count);
-        refractory = 10; // e.g., skip next 10 samples (~100 ms)
+        refractory = 20; // e.g., skip next 20 samples (~200 ms)
     }
 
     if (refractory) refractory--;
@@ -228,13 +241,16 @@ void detect_events(int16_t filtered_current) {  // Changed: Param for filtered
 	// Focus: Every 50 samples (~0.5s @100Hz), compute alpha on window
 	static size_t sample_counter = 0;   // Keeps track of elapsed samples
 	sample_counter++;                   // Increment for each new sample processed
-    // When 50 samples have accumulated (~5s at 100Hz)
+
+    // When 50 samples have accumulated (~0.5s @ 100Hz)
 	if (sample_counter >= 50) {
 
         // Step 1: Compute alpha score using full ADC buffer
         attention_level = compute_alpha_score(adc_buffer, BUFFER_SIZE);  // Use full buffer as window
+
 	  	// Step 2: Reset counter for the next window
         sample_counter = 0;
+        
         // Step 3: Log or transmit the computed focus metric
 	 	ESP_LOGI(ADC_TAG, "Attention level: %u", attention_level);
 
@@ -289,6 +305,24 @@ void adc_filtering(void *arg) {
 
     }
 }
+
+
+// =============================
+// Test Helper Fn: Internal State Reset
+// =============================
+void reset_filter_state(void) {
+    bp_x[0] = bp_x[1] = 0.0f;
+    bp_y[0] = bp_y[1] = 0.0f;
+}
+
+void reset_adc_state(void) {
+    memset(adc_buffer, 0, sizeof(adc_buffer));
+    buffer_index = 0;
+    blink_count = 0;
+    attention_level = 0;
+    reset_filter_state();
+}
+
 
 
 

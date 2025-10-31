@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/tmpor/Documents/ESP_Projects/ESP32_ADC_IIF_Bandpass_Filter/main
+# Install script for directory: C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/adc")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32_ADC_IIF_BANDPASS_FILTER")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

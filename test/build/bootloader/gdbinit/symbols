@@ -22,4 +22,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/bootloader/bootloader.elf
+file C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/bootloader/bootloader.elf

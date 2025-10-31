@@ -40,9 +40,12 @@ extern adc_cali_handle_t adc_cali_handle;     // ADC Calibration handle
 #define BUFFER_SIZE    256             // Circular buffer length
 #define ADC_SAMPLE_PERIOD_MS 10.0       // Sampling period (ms)
 #define SAMPLE_RATE_HZ (1000 / ADC_SAMPLE_PERIOD_MS)  // Derived rate
+#define REFRACTORY_PERIOD_SAMPLES 20  // 200 ms at 100 Hz
+
 
 // =============================
 // Circular Buffer & Index (Exposed for ADC.c)
+extern int16_t adc_buffer[BUFFER_SIZE];
 extern volatile size_t buffer_index; // producer increments after write
 
 
@@ -66,6 +69,12 @@ extern float bp_a[3];
 extern float bp_b[3];
 extern float bp_x[2];   // Input History
 extern float bp_y[2];   // IIR Output History (for test reset)
+
+
+// =============================
+// Helper: Push New Sample into ADC Buffer
+// =============================
+void adc_push_sample(int16_t sample);
 
 
 // =============================
@@ -93,6 +102,15 @@ extern float bp_y[2];   // IIR Output History (for test reset)
     uint8_t compute_alpha_score(const int16_t* window, size_t len);  // Goertzel-based
 
 
-
-
 #endif // ADC_H
+
+
+// =============================
+// Test Support API
+// =============================
+#ifdef UNIT_TEST
+
+void reset_filter_state(void);
+void reset_adc_state(void);
+
+#endif

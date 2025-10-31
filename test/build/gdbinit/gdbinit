@@ -1,2 +1,2 @@
-source C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/gdbinit/symbols
-source C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/gdbinit/connect
+source C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/gdbinit/symbols
+source C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/gdbinit/connect

@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.16)
 
 if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   file(REMOVE_RECURSE
-  "adc.bin"
-  "adc.map"
+  "ESP32_ADC_IIF_BANDPASS_FILTER.bin"
+  "ESP32_ADC_IIF_BANDPASS_FILTER.map"
   "bootloader\\bootloader.bin"
   "bootloader\\bootloader.elf"
   "bootloader\\bootloader.map"

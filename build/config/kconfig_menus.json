@@ -14189,6 +14189,94 @@
                 "id": "component-config-spi-flash-driver",
                 "title": "SPI Flash driver",
                 "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If not set, assertions on float arguments will not be available.",
+                        "id": "UNITY_ENABLE_FLOAT",
+                        "name": "UNITY_ENABLE_FLOAT",
+                        "range": null,
+                        "title": "Support for float type",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If not set, assertions on double arguments will not be available.",
+                        "id": "UNITY_ENABLE_DOUBLE",
+                        "name": "UNITY_ENABLE_DOUBLE",
+                        "range": null,
+                        "title": "Support for double type",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If not set, assertions on 64-bit integer types will always fail.\nIf this feature is enabled, take care not to pass pointers (which are 32 bit)\nto UNITY_ASSERT_EQUAL, as that will cause pointer-to-int-cast warnings.",
+                        "id": "UNITY_ENABLE_64BIT",
+                        "name": "UNITY_ENABLE_64BIT",
+                        "range": null,
+                        "title": "Support for 64-bit integer types",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If set, Unity will colorize test results using console escape sequences.",
+                        "id": "UNITY_ENABLE_COLOR",
+                        "name": "UNITY_ENABLE_COLOR",
+                        "range": null,
+                        "title": "Colorize test output",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If set, then the following features will be available:\n\n- TEST_CASE macro which performs automatic registration of test functions\n- Functions to run registered test functions: unity_run_all_tests,\n  unity_run_tests_with_filter, unity_run_single_test_by_name.\n- Interactive menu which lists test cases and allows choosing the tests to\n  be run, available via unity_run_menu function.\n\nDisable if a different test registration mechanism is used.",
+                        "id": "UNITY_ENABLE_IDF_TEST_RUNNER",
+                        "name": "UNITY_ENABLE_IDF_TEST_RUNNER",
+                        "range": null,
+                        "title": "Include ESP-IDF test registration/running helpers",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If set, unity_fixture.h header file and associated source files are part of\nthe build. These provide an optional set of macros and functions to\nimplement test groups.",
+                        "id": "UNITY_ENABLE_FIXTURE",
+                        "name": "UNITY_ENABLE_FIXTURE",
+                        "range": null,
+                        "title": "Include Unity test fixture",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If set, the unity framework will print the backtrace information before\njumping back to the test menu. The jumping is usually occurs in assert\nfunctions such as TEST_ASSERT, TEST_FAIL etc.",
+                        "id": "UNITY_ENABLE_BACKTRACE_ON_FAIL",
+                        "name": "UNITY_ENABLE_BACKTRACE_ON_FAIL",
+                        "range": null,
+                        "title": "Print a backtrace when a unit test fails",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If enabled, the Unity test framework will automatically insert test cases\nin a sorted order at registration time (during constructor execution),\nbased on their source file path and line number.\n\nThis ensures consistent execution order across platforms (e.g., Linux vs. on-chip),\npreserving the logical order in which tests are written in the source files.\n\nNote, the file path used for sorting follows the full absolute path format.\n/IDF/examples/system/unit_test/components/testable/test/test_mean.c",
+                        "id": "UNITY_TEST_ORDER_BY_FILE_PATH_AND_LINE",
+                        "name": "UNITY_TEST_ORDER_BY_FILE_PATH_AND_LINE",
+                        "range": null,
+                        "title": "Order unit tests by file path and line number",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-unity-unit-testing-library",
+                "title": "Unity unit testing library",
+                "type": "menu"
             }
         ],
         "depends_on": null,

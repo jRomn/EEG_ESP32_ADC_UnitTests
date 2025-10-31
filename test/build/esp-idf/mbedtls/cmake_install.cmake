@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/unit_test_test")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/EEG_ESP32_ADC_UnitTests")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/esp-idf/mbedtls/mbedtls/cmake_install.cmake")
+  include("C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/esp-idf/mbedtls/mbedtls/cmake_install.cmake")
 endif()
 

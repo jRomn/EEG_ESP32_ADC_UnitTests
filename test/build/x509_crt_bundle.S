@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/tmpor/Documents/ESP_Projects/adc/test/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/tmpor/Documents/Embedded_Systems_Projects/EEG_ESP32_ADC_UnitTests/test/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)
